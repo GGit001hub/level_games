@@ -13,7 +13,7 @@ import random as r
 import asyncio
 
 kutish = ["👀","🤑","👁","🙁","🙁"]
-sovgalar = ["💎",3,3,5,5,5,5,5,5,5,7,7,10,10]
+sovgalar = ["💎",3,5,5,5,5,5,5,5,7,10,10]
 
 @dp.callback_query_handler(text="reply",state=LevelUp.tosh)
 async def ToshSjak(call:CallbackQuery,state:FSMContext):

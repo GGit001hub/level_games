@@ -14,7 +14,7 @@ def select_users(idn):
     user = db.execute(F"SELECT * FROM Users where idn={idn}")
     return user.fetchone()
 
-# print(select_users(1173831936))
+print(select_users(1173831936))
 # print(select_users(1173831936)[4].split(",")[0])
 # s = a.split(",")
 # print(s[0])
@@ -62,7 +62,7 @@ def user_name(name):
         return f"{hisob[1]},{hisob[3]},{hisob[0]}"
     else:
         return "None1None2"
-print(user_name(name="😱 Jake"))
+# print(user_name(name="😱 Jake"))
 
 
 ## darajani ko'tarish uchun funksiya 👇
