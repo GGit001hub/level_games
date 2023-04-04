@@ -5,7 +5,7 @@ from aiogram.dispatcher import FSMContext
 from loader import dp
 import sqlite3
 
-from .functions import *
+from .functions import user_name
 from keyboards.default.for_start import *
 from keyboards.inline.sozlamalar import *
 from states.All_State import *
@@ -25,8 +25,9 @@ async def LOHoj(call:CallbackQuery):
 @dp.message_handler(state=Register.login_name)
 async def IsnTekshir(ms:Message,state:FSMContext):
     data = user_name(ms.text).split(",")
-
+    print(data)
     if data[0] != "None1None2":
+        # print(data[0])
         ismi = data[0]
         pasoword = data[1]
         id_raqam = data[2]
@@ -37,7 +38,7 @@ async def IsnTekshir(ms:Message,state:FSMContext):
         await ms.answer("🔒 Parolni kiriting ❗")
         await Register.login_password.set()
     else:
-        await ms.answer("❌ Bunaqa account yo'q",reply_markup=login)
+        await ms.answer("❌ Bunday account yo'q",reply_markup=login)
         await Register.bosh_holat.set()
 
 

@@ -48,13 +48,16 @@ async def ZakVat(call:CallbackQuery, state:FSMContext):
     date = await state.get_data()
     battle_id = date.get("idn_get")
     user_idn = date.get("user_id")
+    battle_id = int(battle_id)
+    user_idn = int(user_idn)
+
     await call.message.delete()
     await asyncio.sleep(2)
 
     tr = 0
     while tr < 5:
         tr += 1
-        tugri = select_users(battle_id)[8]
+        tugri = select_users(battle_id)['savol']
         await state.update_data(number = tr)
         await LevelUp.get_javob.set()
 
@@ -62,6 +65,7 @@ async def ZakVat(call:CallbackQuery, state:FSMContext):
     
     update_baza("battle",sum(user_javobi),user_idn)
     # await call.message.answer("O'yin tugadi \nNatijalar hisoblanmoqda...")
+    # await call.message.delete()
     await LevelUp.battle.set()
 
 
@@ -72,8 +76,10 @@ async def ZakVat(call:CallbackQuery, state:FSMContext):
 async def MKSO(ms:Message,state:FSMContext):
     date = await state.get_data()
     battle_id = date.get("idn_get")
+    battle_id = int(battle_id)
+
     javob = ms.text
-    tugri = select_users(battle_id)[8]
+    tugri = select_users(battle_id)['savol']
 
     await LevelUp.get_kutish.set()
     if javob == tugri:

@@ -18,6 +18,13 @@ class LevelUp(StatesGroup):
     get_javob = State()
     zakovat = State()
 
+class LevelHarftop(StatesGroup):
+    taxmin = State()
+
+class LevelZina(StatesGroup):
+    bosh_hl = State()
+    ichi = State()
+
 
 class Farms(StatesGroup):
     bosh_holat = State()
@@ -64,6 +71,8 @@ class Marketnig(StatesGroup): ## Xarid qilish uchun state
     kumushs = State()
     pulls = State()
     fermas = State()
+    others = State()
+    sticker = State()
     
     ichiga = State()
     kumush_ichi = State()

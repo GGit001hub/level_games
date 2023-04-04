@@ -22,7 +22,7 @@ async def ReklamaXizmati(ms:Message):
 @dp.inline_handler(text="rek",state=PulTop.reklama)
 async def Reksi(query:InlineQuery,state:FSMContext):
     date = await state.get_data()
-    idn = date.get("user_id")
+    idn = int(date.get("user_id"))
     await query.answer(results=reklama1)
     b = pullari(idn)
     update_baza("pul",b+3,idn)
@@ -32,7 +32,7 @@ async def Reksi(query:InlineQuery,state:FSMContext):
 @dp.inline_handler(text="reklama",state=PulTop.reklama)
 async def Reksi(query:InlineQuery,state:FSMContext):
     date = await state.get_data()
-    idn = date.get("user_id")
+    idn = int(date.get("user_id"))
     b = pullari(idn)
     update_baza("pul",b+3,idn)
     await query.answer(results=reklama2)

@@ -60,3 +60,9 @@ rek_lama = InlineKeyboardMarkup(
         ]
     ]
 )
+
+boshla = InlineKeyboardMarkup(
+    inline_keyboard=[[
+        InlineKeyboardButton("O'yinni boshlash",callback_data='boshlash')
+    ]]
+)

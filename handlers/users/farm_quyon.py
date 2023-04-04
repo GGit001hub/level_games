@@ -18,10 +18,11 @@ import asyncio,aiogram
 async def Quyon_xona(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
     about = select_users_farm(user_id)
-    bor = about[2] ## 2 - element bu quyon
-    sabzi = about[4] ## 4 - element bu sabzilar
-    levl = about[6].split(",")[0]
+    bor = int(about['quyon']) ## 2 - element bu quyon
+    sabzi = int(about['sabzi']) ## 4 - element bu sabzilar
+    levl = about['lvlquyon'].split(",")[0]
     if bor >=1:
         await call.message.answer(f"🐰 <b>Sizni quyonlaringiz</b>\n✅ <b>Jami: {bor} ta</b> \
             \n🥕 Sabzilar: {sabzi} ta \n🏆 Darajasi: {levl}",reply_markup=hal_qilish)
@@ -47,9 +48,10 @@ async def Sidawn(call:CallbackQuery):
 async def Feeding(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
     about = select_users_farm(user_id)
-    quyonlar = about[2]
-    sabzilar = about[4]
+    quyonlar = int(about['quyon'])
+    sabzilar = int(about['sabzi'])
 
     if sabzilar >= quyonlar:
         qoldi = sabzilar - quyonlar
@@ -69,10 +71,11 @@ async def Feeding(call:CallbackQuery,state:FSMContext):
 async def Tugabpti(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
     about = select_users_farm(user_id)
-    bor = about[2] ## 2 - element bu quyon
-    sabzi = about[4] ## 4 - element bu sabzilar
-    levl = about[6].split(",")[0]
+    bor = int(about['quyon']) ## 2 - element bu quyon
+    sabzi = int(about['sabzi']) ## 4 - element bu sabzilar
+    levl = about['lvlquyon'].split(",")[0]
     if bor >=1:
         await call.message.answer(f"🐰 <b>Sizni quyonlaringiz</b>\n✅ <b>Jami: {bor} ta</b> \
             \n🥕 Sabzilar: {sabzi} ta \n🏆 Darajasi: {levl}",reply_markup=hal_qilish)
@@ -89,9 +92,10 @@ async def Tugabpti(call:CallbackQuery,state:FSMContext):
 async def Sotma(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
     about = select_users_farm(user_id)
-    quyon = about[2]
-    lvl = about[6].split(",")[0]
+    quyon = int(about['quyon'])
+    lvl = about['lvlquyon'].split(",")[0]
     lvl = int(lvl)
 
     await call.message.delete()
@@ -123,10 +127,10 @@ async def Sotma(call:CallbackQuery,state:FSMContext):
 async def soyma5(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
-
+    user_id = int(user_id)
     about = select_users_farm(user_id)
-    quyon = about[2]
-    lvl = about[6].split(",")[0]
+    quyon = int(about['quyon'])
+    lvl = about['lvlquyon'].split(",")[0]
     lvl = int(lvl)
 
     if quyon >= 5:

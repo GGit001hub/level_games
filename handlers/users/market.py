@@ -69,10 +69,11 @@ async def Nazatxona(call:CallbackQuery):
 async def Hisobxona(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
 
     user_about = select_users(user_id)
-    pul = user_about[5]
-    kumush = user_about[6]
+    pul = int(user_about['pul'])
+    kumush = int(user_about['kumush'])
     malumot = f"💰 <b>Hisobingiz</b>: {pul} $\n💎 <b>Kumushlar</b>: {kumush}"
     balo = await call.message.answer(malumot)
     await asyncio.sleep(5)

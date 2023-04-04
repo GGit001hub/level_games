@@ -15,9 +15,10 @@ import asyncio,aiogram
 
 @dp.callback_query_handler(text="batl1vs1",state=LevelUp.battle)
 async def birgaxona(call:CallbackQuery):
-    await call.message.answer("Batlga kimni chaqirasiz ❓\nAccount nomini kiriting ❗",reply_markup=bekor_qilish)
-    await call.message.delete()
-    await LevelUp.birga_bir.set()
+    await call.message.answer("Bu bo'lim tayor emas")
+    # await call.message.answer("Batlga kimni chaqirasiz ❓\nAccount nomini kiriting ❗",reply_markup=bekor_qilish)
+    # await call.message.delete()
+    # await LevelUp.birga_bir.set()
 
 
 @dp.message_handler(state=LevelUp.birga_bir)
@@ -26,7 +27,7 @@ async def Bigacxzon(ms:Message,state:FSMContext):
     user_id = date.get("user_id")
     user = ms.text
     check = user_name(user)
-    # print(check)
+    print(check)
     if check != "None1None2":
         about = select_users(user_id)
         sorov = f"Sizni {about[1]} 1 vs 1 chaqiryapti\nSo'rovni qabul qilasizmi\
@@ -39,50 +40,33 @@ async def Bigacxzon(ms:Message,state:FSMContext):
 
 
 
-@dp.callback_query_handler(text="uyniyman",state=LevelUp.birga_bir)
+@dp.callback_query_handler(text="uyniyman",state=LevelUp.battle)
 async def rozixona(call:CallbackQuery):
-    await call.message.answer("Sizni chaqirgan foydalanuvchini 💡 Id raqamni kiriting")
+    await call.message.answer("💡 Id raqamni kiriting")
     # await call.message.delete()
     await LevelUp.id_kirit.set()
-
-@dp.callback_query_handler(text="yuq",state=LevelUp.birga_bir)
-async def Uynamiyman(call:CallbackQuery):
-    await call.message.answer("Quyidagilardan birini tanlang 👇",reply_markup=inline_battle)
-    await LevelUp.battle.set()
-
-
 
 
 @dp.message_handler(state=LevelUp.id_kirit)
 async def Kiritxona(ms:Message,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
-    xabar = "Battle boshlandi. Kim <b>ko'p like yig'a olsa</b> yutadi\
-            \nLike yig'ish uchun <b>3 daqiqa</b> vaqt beriladi"
+    xabar = "Battle boshlandi. Kim ko'p like yig'a olsa yutadi\
+            \nLike yig'ish uchun 10 daqiqa vaqt beriladi"
     btl_id = ms.text
     try:
         user1 = select_users(user_id)[1]
         user2 = select_users(btl_id)[1]
         rek_lama = InlineKeyboardMarkup(
         inline_keyboard=[[
-                InlineKeyboardButton(f"<b>{user1}</b>",switch_inline_query="user1"),
-                InlineKeyboardButton(f"<b>{user2}</b.>",switch_inline_query="user2")
+                InlineKeyboardButton(f"{user1}",switch_inline_query="user1"),
+                InlineKeyboardButton(f"{user2}",switch_inline_query="user2")
             ],[
-                InlineKeyboardButton("Orqaga qaytish",callback_data="orqaga")
+                InlineKeyboardButton("Bat",callback_data="orqaga")
             ]])
 
         await ms.answer(xabar,reply_markup=rek_lama)
         await bot.send_message(chat_id=btl_id,text=xabar,reply_markup=rek_lama)
     except:
         await ms.answer("Kiritilgan id xato\nBoshqatdan urunub ko'ring")
-
-
-
-@dp.callback_query_handler(text="orqaga",state=LevelUp.id_kirit)
-async def Zanar(call:CallbackQuery):
-    await call.message.answer("Quyidagilardan birini tanlang 👇",reply_markup=inline_battle)
-    await LevelUp.battle.set()
-
-
-
 

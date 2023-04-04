@@ -8,6 +8,7 @@ pul_tanlash =ReplyKeyboardMarkup(
             KeyboardButton("Savollarga javoblar"),
         ],
         [
+            KeyboardButton("🔀 Chalkash harflar"),
             KeyboardButton("🛍 Reklama")
         ],
         [
@@ -21,7 +22,11 @@ level_up_button = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton("⚔️ Battle"),
-            KeyboardButton("🎲 Tosh tashlash")
+            KeyboardButton("🎲 Tosh tashlash"),
+        ],
+        [
+            KeyboardButton("🔎 Harf topish"),
+            KeyboardButton("🪜 Zinapoya"),
         ],
         [
             KeyboardButton("🔙 Orqaga qaytish")

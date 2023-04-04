@@ -19,11 +19,13 @@ import asyncio,aiogram
 async def fermaxona(call:CallbackQuery, state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
+
     about_user = select_users(user_idn)
     about_farm = select_users_farm(user_idn)
  
-    kumush = about_user[6]
-    bor_quyon = about_farm[2]
+    kumush = int(about_user['kumush'])
+    bor_quyon = int(about_farm['quyon'])
 
     if kumush >= 15:
         gems = int(kumush) - 15
@@ -58,11 +60,13 @@ async def tahxona(call:CallbackQuery):
 async def fermaxona(call:CallbackQuery, state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
+
     about_user = select_users(user_idn)
     about_farm = select_users_farm(user_idn)
  
-    kumush = about_user[6]
-    bor_quyon = about_farm[2]
+    kumush = int(about_user['kumush'])
+    bor_quyon = int(about_farm['quyon'])
 
     if kumush >= 69:
         gems = int(kumush) - 69
@@ -93,11 +97,13 @@ async def fermaxona(call:CallbackQuery, state:FSMContext):
 async def fermaxona(call:CallbackQuery, state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
+
     about_user = select_users(user_idn)
     about_farm = select_users_farm(user_idn)
  
-    kumush = about_user[6]
-    bor_tovuq = about_farm[3]
+    kumush = int(about_user['kumush'])
+    bor_tovuq = int(about_farm['tovuq'])
 
     if kumush >= 12:
         gems = int(kumush) - 12
@@ -126,11 +132,13 @@ async def fermaxona(call:CallbackQuery, state:FSMContext):
 async def fermaxona(call:CallbackQuery, state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
+
     about_user = select_users(user_idn)
     about_farm = select_users_farm(user_idn)
  
-    kumush = about_user[6]
-    bor_tovuq = about_farm[3]
+    kumush = int(about_user['kumush'])
+    bor_tovuq = int(about_farm['tovuq'])
 
     if kumush >= 55:
         gems = int(kumush) - 55
@@ -157,11 +165,13 @@ async def fermaxona(call:CallbackQuery, state:FSMContext):
 async def Sabzixona(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
+
     user_about = select_users(user_idn)
     farm_about = select_users_farm(user_idn)
 
-    puli = user_about[5]
-    sabzilar = farm_about[4]
+    puli = int(user_about['pul'])
+    sabzilar = int(farm_about['sabzi'])
 
     if puli >= 12:
         up_pull = int(puli) - 12
@@ -189,11 +199,13 @@ async def Sabzixona(call:CallbackQuery,state:FSMContext):
 async def Sabzixona(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
+
     user_about = select_users(user_idn)
     farm_about = select_users_farm(user_idn)
 
-    puli = user_about[5]
-    sabzilar = farm_about[4]
+    puli = int(user_about['pul'])
+    sabzilar = int(farm_about['sabzi'])
 
     if puli >= 109:
         up_pull = int(puli) - 109
@@ -221,11 +233,12 @@ async def Sabzixona(call:CallbackQuery,state:FSMContext):
 async def Sabzixona(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
     user_about = select_users(user_idn)
     farm_about = select_users_farm(user_idn)
 
-    puli = user_about[5]
-    sabzilar = farm_about[5]
+    puli = int(user_about['pul'])
+    sabzilar = int(farm_about['don'])
 
     if puli >= 9:
         up_pull = int(puli) - 9
@@ -252,11 +265,13 @@ async def Sabzixona(call:CallbackQuery,state:FSMContext):
 async def Sabzixona(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
+    
     user_about = select_users(user_idn)
     farm_about = select_users_farm(user_idn)
 
-    puli = user_about[5]
-    sabzilar = farm_about[5]
+    puli = int(user_about['pul'])
+    sabzilar = int(farm_about['don'])
 
     if puli >= 79:
         up_pull = int(puli) - 79

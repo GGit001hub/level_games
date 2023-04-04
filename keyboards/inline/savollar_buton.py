@@ -15,3 +15,13 @@ nechatlig = InlineKeyboardMarkup(
         ]
     ]
 )
+
+
+ha_yuq = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton("✅ Ha olaman",callback_data="yes"),
+            InlineKeyboardButton("❌ Yo'q olmayman",callback_data="no"),
+        ]
+    ]
+)

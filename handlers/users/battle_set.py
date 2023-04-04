@@ -13,8 +13,8 @@ import random as r
 import asyncio
 import requests,json
 
-dbs = sqlite3.connect("data/online.db")
-creat = dbs.execute("""CREATE TABLE IF NOT EXISTS Fight (name TEXT, idn INT, vaqt INT)""")
+# dbs = sqlite3.connect("data/online.db")
+# creat = dbs.execute("""CREATE TABLE IF NOT EXISTS Fight (name TEXT, idn INT, vaqt INT)""")
 
 user_javobi = []
 
@@ -39,6 +39,7 @@ async def Zakvat(call:CallbackQuery):
 @dp.callback_query_handler(text="bekor",state=LevelUp.zakovat)
 async def BIKOPR(call:CallbackQuery):
     await call.message.answer("Quyidagilardan birini tanlang 👇",reply_markup=inline_battle)
+    await call.message.delete()
     await LevelUp.battle.set()
 
 
@@ -49,11 +50,12 @@ async def BIKOPR(call:CallbackQuery):
 async def AcountQidirish(ms:Message,state:FSMContext):
     data = await state.get_data()
     user_id = data.get("user_id")
+    user_id = int(user_id)
     acount_name = ms.text
     tekshir = user_name(acount_name)
     if tekshir != "None1None2":
         about = tekshir.split(",")
-        ids = about[2]
+        ids = int(about[2])
         await state.update_data(battle_id = ids)## Batl qiluvchini id raqamini oladi
         await bot.send_message(chat_id=ids,text=f"<b>Sizni {ms.from_user.first_name} zakovat o'yiniga chaqiryapti</b>\
             \nSo'rovni qabul qilasizmi ❓\nUser ID raqam: {user_id}",reply_markup=sorovnoma)
@@ -70,18 +72,20 @@ async def BekQil(call:CallbackQuery):
     await LevelUp.bosh_holat.set()
 
 
-## Boshlash uchun kod 👇
-## Boshlash uchun kod  👇
-## Boshlash uchun kod   👇
+##   B o s h l a s h   u c h u n   k o d  👇
+##  B o s h l a s h   u c h u n   k o d    👇
+## B o s h l a s h   u c h u n   k o d      👇
 
 @dp.callback_query_handler(text="boshlash",state=LevelUp.zakovat)
 async def BOSHlandi(call:CallbackQuery,state:FSMContext):
     stdate = await state.get_data()
     user_ids = stdate.get("user_id")
     battles_id = stdate.get("battle_id")
+    user_ids = int(user_ids)
+    battles_id = int(battles_id)
     
     # savol uchun urls
-    level = select_users(user_ids)[4].split(",")[0]
+    level = select_users(user_ids)['level'].split(",")[0]
     level = int(level)
     await call.message.answer("🎯 O'yin boshlandi 🤔")
     await bot.send_message(chat_id=battles_id,text="🎯 O'yin boshlandi 🤔\
@@ -118,8 +122,8 @@ async def BOSHlandi(call:CallbackQuery,state:FSMContext):
     ## Hisob kitob uchun kodlar
     update_baza("battle",sum(user_javobi),user_ids)
     await asyncio.sleep(2)
-    kirgan = select_users(battles_id)[7]
-    chaqirgan = select_users(user_ids)[7]
+    kirgan = int(select_users(battles_id)['battle'])
+    chaqirgan = int(select_users(user_ids)['battle'])
 
     ## Kib ko'p javob topganini hisoblash uchun 👇
     ## Kib ko'p javob topganini hisoblash uchun  👇
@@ -148,6 +152,8 @@ async def BOSHlandi(call:CallbackQuery,state:FSMContext):
 async def JavobKeldi(ms:Message, state:FSMContext):
     date = await state.get_data()
     batle_id = date.get("battle_id")
+    batle_id = int(batle_id)
+    
     javob = ms.text
     tugri = date.get("tugri")
     await LevelUp.set_kutish.set()

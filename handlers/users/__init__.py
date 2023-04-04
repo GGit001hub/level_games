@@ -1,6 +1,6 @@
 from . import start
 from . import help
-from . import games
+from . import profile
 from . import login
 
 from . import level_tosh,level

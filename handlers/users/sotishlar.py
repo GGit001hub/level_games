@@ -33,18 +33,19 @@ async def Sanma(call:CallbackQuery):
 async def Levl1(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     userid = date.get("user_id")
+    userid = int(userid)
     about = select_users_farm(userid)
-    quyon = about[2]
+    quyon = about['quyon']
     nimasi = int(quyon) - 1
     update_farm("quyon",nimasi,userid)
     user_about = select_users(userid)
-    kumushlar = int(user_about[5]) + 149
+    kumushlar = int(user_about['kumush']) + 149
     update_baza("pul",kumushlar,userid)
     await call.message.answer("👩‍🌾 Ferma bo'limi",reply_markup=ruyxat_inline)
     await call.message.delete()
     await Farms.bosh_holat.set()
     ## quyon levelni kamaytirish
-    lvl_about = about[6]
+    lvl_about = about['lvlquyon']
     lvl = lvl_about[0]
     dan = lvl_about[-1].split("/")[-1]
     buldi = lvl_about[-1].split("/")[0]
@@ -58,19 +59,20 @@ async def Levl1(call:CallbackQuery,state:FSMContext):
 async def Levl1(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     userid = date.get("user_id")
+    userid = int(userid)
     about = select_users_farm(userid)
-    quyon = about[2]
+    quyon = about['quyon']
     nimasi = int(quyon) - 1
     update_farm("quyon",nimasi,userid)
 
     user_about = select_users(userid)
-    kumushlar = int(user_about[5]) + 249
+    kumushlar = int(user_about['kumush']) + 249
     update_baza("pul",kumushlar,userid)
     await call.message.answer("👩‍🌾 Ferma bo'limi",reply_markup=ruyxat_inline)
     await call.message.delete()
     await Farms.bosh_holat.set()
     ## quyon levelni kamaytirish
-    lvl_about = about[6]
+    lvl_about = about['lvlquyon']
     lvl = lvl_about[0]
     dan = lvl_about[-1].split("/")[-1]
     buldi = lvl_about[-1].split("/")[0]
@@ -84,18 +86,19 @@ async def Levl1(call:CallbackQuery,state:FSMContext):
 async def Levl1(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     userid = date.get("user_id")
+    userid = int(userid)
     about = select_users_farm(userid)
-    quyon = about[2]
+    quyon = about['quyon']
     nimasi = int(quyon) - 1
     update_farm("quyon",nimasi,userid)
     user_about = select_users(userid)
-    kumushlar = int(user_about[5]) + 349
+    kumushlar = int(user_about['kumush']) + 349
     update_baza("pul",kumushlar,userid)
     await call.message.answer("👩‍🌾 Ferma bo'limi",reply_markup=ruyxat_inline)
     await call.message.delete()
     await Farms.bosh_holat.set()
     ## quyon levelni kamaytirish
-    lvl_about = about[6]
+    lvl_about = about['lvlquyon']
     lvl = lvl_about[0]
     dan = lvl_about[-1].split("/")[-1]
     buldi = lvl_about[-1].split("/")[0]
@@ -110,18 +113,19 @@ async def Levl1(call:CallbackQuery,state:FSMContext):
 async def Levl1(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     userid = date.get("user_id")
+    userid = int(userid)
     about = select_users_farm(userid)
-    quyon = about[2]
+    quyon = about['quyon']
     nimasi = int(quyon) - 1
     update_farm("quyon",nimasi,userid)
     user_about = select_users(userid)
-    kumushlar = int(user_about[5]) + 449
+    kumushlar = int(user_about['kumush']) + 449
     update_baza("pul",kumushlar,userid)
     await call.message.answer("👩‍🌾 Ferma bo'limi",reply_markup=ruyxat_inline)
     await call.message.delete()
     await Farms.bosh_holat.set()
     ## quyon levelni kamaytirish
-    lvl_about = about[6]
+    lvl_about = about['lvlquyon']
     lvl = lvl_about[0]
     dan = lvl_about[-1].split("/")[-1]
     buldi = lvl_about[-1].split("/")[0]
@@ -135,18 +139,19 @@ async def Levl1(call:CallbackQuery,state:FSMContext):
 async def Levl1(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     userid = date.get("user_id")
+    userid = int(userid)
     about = select_users_farm(userid)
-    quyon = about[2]
+    quyon = about['quyon']
     nimasi = int(quyon) - 1
     update_farm("quyon",nimasi,userid)
     user_about = select_users(userid)
-    kumushlar = int(user_about[5]) + 600
+    kumushlar = int(user_about['kumush']) + 600
     update_baza("pul",kumushlar,userid)
     await call.message.answer("👩‍🌾 Ferma bo'limi",reply_markup=ruyxat_inline)
     await call.message.delete()
     await Farms.bosh_holat.set()
     ## quyon levelni kamaytirish
-    lvl_about = about[6]
+    lvl_about = about['lvlquyon']
     lvl = lvl_about[0]
     dan = lvl_about[-1].split("/")[-1]
     buldi = lvl_about[-1].split("/")[0]
@@ -166,13 +171,14 @@ async def Levl1(call:CallbackQuery,state:FSMContext):
 async def listen5x(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
     about = select_users_farm(user_id)## quyon sotish uchun
-    quyon = about[2]
+    quyon = about['quyon']
     sotildi = int(quyon) - 5
     update_farm("quyon",sotildi,user_id)
 
     user_about = select_users(user_id) ## Sotgani uchun pul qo'shiladi
-    pul = user_about[5]
+    pul = user_about['pul']
     barcha_pul = int(pul) + 749
     update_baza("pul",barcha_pul,user_id)
     await call.message.answer("👩‍🌾 Ferma bo'limi. 5 ta quyon sotildi ✅",reply_markup=ruyxat_inline)
@@ -187,13 +193,14 @@ async def listen5x(call:CallbackQuery,state:FSMContext):
 async def listen5x(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
     about = select_users_farm(user_id)## quyon sotish uchun
-    quyon = about[2]
+    quyon = about['quyon']
     sotildi = int(quyon) - 5
     update_farm("quyon",sotildi,user_id)
 
     user_about = select_users(user_id) ## Sotgani uchun pul qo'shiladi
-    pul = user_about[5]
+    pul = user_about['pul']
     barcha_pul = int(pul) + 1249
     update_baza("pul",barcha_pul,user_id)
     await call.message.answer("👩‍🌾 Ferma bo'limi. 5 ta quyon sotildi ✅",reply_markup=ruyxat_inline)
@@ -210,13 +217,14 @@ async def listen5x(call:CallbackQuery,state:FSMContext):
 async def listen5x(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
     about = select_users_farm(user_id)## quyon sotish uchun
-    quyon = about[2]
+    quyon = about['quyon']
     sotildi = int(quyon) - 5
     update_farm("quyon",sotildi,user_id)
 
     user_about = select_users(user_id) ## Sotgani uchun pul qo'shiladi
-    pul = user_about[5]
+    pul = user_about['pul']
     barcha_pul = int(pul) + 1749
     update_baza("pul",barcha_pul,user_id)
     await call.message.answer("👩‍🌾 Ferma bo'limi. 5 ta quyon sotildi ✅",reply_markup=ruyxat_inline)
@@ -233,13 +241,14 @@ async def listen5x(call:CallbackQuery,state:FSMContext):
 async def listen5x(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
     about = select_users_farm(user_id)## quyon sotish uchun
-    quyon = about[2]
+    quyon = about['quyon']
     sotildi = int(quyon) - 5
     update_farm("quyon",sotildi,user_id)
 
     user_about = select_users(user_id) ## Sotgani uchun pul qo'shiladi
-    pul = user_about[5]
+    pul = user_about['pul']
     barcha_pul = int(pul) + 2249
     update_baza("pul",barcha_pul,user_id)
     await call.message.answer("👩‍🌾 Ferma bo'limi. 5 ta quyon sotildi ✅",reply_markup=ruyxat_inline)
@@ -254,13 +263,14 @@ async def listen5x(call:CallbackQuery,state:FSMContext):
 async def listen5x(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     user_id = date.get("user_id")
+    user_id = int(user_id)
     about = select_users_farm(user_id)## quyon sotish uchun
-    quyon = about[2]
+    quyon = about['quyon']
     sotildi = int(quyon) - 5
     update_farm("quyon",sotildi,user_id)
 
     user_about = select_users(user_id) ## Sotgani uchun pul qo'shiladi
-    pul = user_about[5]
+    pul = user_about['pul']
     barcha_pul = int(pul) + 2400
     update_baza("pul",barcha_pul,user_id)
     await call.message.answer("👩‍🌾 Ferma bo'limi. 5 ta quyon sotildi ✅",reply_markup=ruyxat_inline)

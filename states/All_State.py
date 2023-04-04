@@ -41,3 +41,8 @@ class Nastroyka(StatesGroup):
     password_set = State()
     phone_set = State()
     logout = State()
+
+
+class Chalkash(StatesGroup):
+    aralash = State()
+    taxmin = State()

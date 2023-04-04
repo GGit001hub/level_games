@@ -24,11 +24,14 @@ tugri_javob = []
 
 
 @dp.callback_query_handler(text="sakista",state=Quizs.boshi)
-async def UchtaliK(call:CallbackQuery,state:FSMContext):
+async def Sakistalik(call:CallbackQuery,state:FSMContext):
     pulls.clear()
     tugri_javob.clear()
     pulls.append(3)
-    info = call.from_user.id
+
+    data = await state.get_data()
+    info = int(data.get('user_id'))
+    print(info,type(info),'11111111111111111111111111111111111111111')
     random_urls = "http://aabbdd.pythonanywhere.com/quiz/"
     respons = requests.request('GET',random_urls)
     date = json.loads(respons.text)
@@ -91,7 +94,8 @@ async def UchtaliK(call:CallbackQuery,state:FSMContext):
     pulls.clear()
     pulls.append(3)
     tugri_javob.clear()
-    info = call.from_user.id
+    data = await state.get_data()
+    info = int(data.get('user_id'))
     random_urls = "http://aabbdd.pythonanywhere.com/quiz/"
     respons = requests.request('GET',random_urls)
     date = json.loads(respons.text)

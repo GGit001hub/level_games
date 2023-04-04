@@ -31,6 +31,7 @@ async def Natr(call:CallbackQuery,state:FSMContext):
 async def BeshTikdi(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     idsi = date.get("user_id")
+    idsi = int(idsi)
     user_puli = pullari(idsi)
     minus = user_puli - 5
 
@@ -51,6 +52,7 @@ async def BeshTikdi(call:CallbackQuery,state:FSMContext):
 async def BeshTikdi(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     idsi = date.get("user_id")
+    idsi = int(idsi)
     user_puli = pullari(idsi)
     minus = user_puli - 10
 
@@ -72,6 +74,7 @@ async def BeshTikdi(call:CallbackQuery,state:FSMContext):
 async def BeshTikdi(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     idsi = date.get("user_id")
+    idsi = int(idsi)
     user_puli = pullari(idsi)
     minus = user_puli - 15
 
@@ -93,6 +96,7 @@ async def BeshTikdi(call:CallbackQuery,state:FSMContext):
 async def BeshTikdi(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     idsi = date.get("user_id")
+    idsi = int(idsi)
     user_puli = pullari(idsi)
     minus = user_puli - 20
 
@@ -115,6 +119,7 @@ async def BeshTikdi(call:CallbackQuery,state:FSMContext):
 async def BeshTikdi(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     idsi = date.get("user_id")
+    idsi = int(idsi)
     user_puli = pullari(idsi)
     minus = user_puli - 50
 

@@ -40,6 +40,7 @@ async def Nazad(call:CallbackQuery):
 async def Nazda(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     info = date.get("user_id")
+    info = int(info)
 
     hisob=pullari(info)
     lola = await call.message.answer(f"<b>Hisobingi: {hisob}</b> $")
@@ -51,7 +52,9 @@ async def Nazda(call:CallbackQuery,state:FSMContext):
 async def TikTik(call:CallbackQuery,state:FSMContext):
     date=await state.get_data()
     idisi = date.get("user_id")
+    idisi = int(idisi)
     puli = pullari(idisi)
+    puli = int(puli)
     if puli >= 5:
         await call.message.answer("Qaysi raqamni tanlaysiz 👇\
             \n<b>1 $ dan 10 $ gacha pul yashiringan</b>",reply_markup=omadni_sinash)
@@ -69,7 +72,9 @@ async def TikTik(call:CallbackQuery,state:FSMContext):
 async def TdikTqik(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     idisi = date.get("user_id")
+    idisi = int(idisi)
     puli = pullari(idisi)
+    puli = int(puli)
     if puli >= 10:
         await call.message.answer("Qaysi raqamni tanlaysiz 👇\
             \n<b>1 $ dan 16 $ gacha pul yashiringan</b>",reply_markup=omadni_sinash)
@@ -86,8 +91,10 @@ async def TdikTqik(call:CallbackQuery,state:FSMContext):
 async def TikTik(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     idisi = date.get("user_id")
+    idisi = int(idisi)
 
     puli = pullari(idisi)
+    puli = int(puli)
     if puli >= 15:
         await call.message.answer("Qaysi raqamni tanlaysiz 👇\
             \n<b>1 $ dan 25 $ gacha pul yashiringan</b>",reply_markup=omadni_sinash)
@@ -104,8 +111,10 @@ async def TikTik(call:CallbackQuery,state:FSMContext):
 async def TikTik(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     idisi = date.get("user_id")
+    idisi = int(idisi)
 
     puli = pullari(idisi)
+    puli = int(puli)
     if puli >= 20:
 
         await call.message.answer("Qaysi raqamni tanlaysiz 👇\
@@ -124,7 +133,9 @@ async def TikTik(call:CallbackQuery,state:FSMContext):
 async def TikTik(call:CallbackQuery,state:FSMContext):
     date = await state.get_data()
     idisi = date.get("user_id")
+    idisi = int(idisi)
     puli = pullari(idisi)
+    puli = int(puli)
     if puli >= 50:
         await call.message.answer("Qaysi raqamni tanlaysiz 👇\
             \n<b>1 $ dan 70 $ gacha pul yashiringan</b>",reply_markup=omadni_sinash)

@@ -9,6 +9,9 @@ set_market = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton("👩‍🌾 Fermachilik",callback_data="ferma"),
+            InlineKeyboardButton("🛠 Boshqa narsalar",callback_data='others')
+        ],
+        [
             InlineKeyboardButton("💰 Hisobni tekshirish",callback_data="hisob")
         ],
         [
@@ -78,6 +81,48 @@ set_ferma = InlineKeyboardMarkup(
         ]
     ]
 )
+
+
+others_button = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton("Taxmin 1x = 18 💎",callback_data='taxmin1x'),
+            InlineKeyboardButton("Taxmin 2x = 35 💎",callback_data='taxmin2x'),
+        ],
+        [
+            InlineKeyboardButton("Stickerlar 👉",callback_data='sticker'),
+            InlineKeyboardButton("Profillar 👉",callback_data='profile'),
+        ],
+        [
+            InlineKeyboardButton("🛍 Xaridlar bo'limiga qaytish 🔙",callback_data="magazin")
+        ]
+    ]
+)
+
+sticker_button = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton("Lion 🦁 = 199 💎",callback_data='lion'),
+            InlineKeyboardButton("Dog 🐕 = 159 💎",callback_data='dog'),
+        ],
+        [
+            InlineKeyboardButton("Rooster 🐓 = 449 $",callback_data='rooster'),
+            InlineKeyboardButton("Cat 🐈 = 399 $",callback_data='cat'),
+        ],
+        [
+            InlineKeyboardButton("Star 🌟 = 99 💎",callback_data='star'),
+            InlineKeyboardButton("Zap ⚡️ = 299 $",callback_data='zap'),
+        ],
+        [
+            InlineKeyboardButton("Swords ⚔️ = 250 $",callback_data='swords'),
+            InlineKeyboardButton("Heart ❤️ = 109 💎",callback_data='heart'),
+        ],
+        [
+            InlineKeyboardButton("Orqaga qaytish 👈",callback_data='orqaga')
+        ]
+    ]
+)
+    
 
 
 

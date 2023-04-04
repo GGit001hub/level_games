@@ -31,10 +31,15 @@ async def Qaundas(ms:Message,state:FSMContext):
     date = await state.get_data()
     info = date.get("user_id")
     yangi_ism = ms.text
-    update_baza('name',f"{yangi_ism}",info)
-    await ms.answer("Qanday o'zgartirish kiritasiz 🔄",reply_markup=settings)
-    await Nastroyka.tanlash.set()
-
+    name = name_check(yangi_ism)
+    if name:
+        update_baza('name',f"{yangi_ism}",int(info))
+        await ms.answer("Qanday o'zgartirish kiritasiz 🔄",reply_markup=settings)
+        await Nastroyka.tanlash.set()
+    else:
+        balo = await ms.answer("❌ Ism kiritishda xato ❌")
+        await asyncio.sleep(5)
+        await balo.delete()
 
 
 @dp.callback_query_handler(text="password",state=Nastroyka.tanlash)
@@ -50,10 +55,10 @@ async def PassWord(call:CallbackQuery):
 @dp.message_handler(state=Nastroyka.eski_parol)
 async def Eski(ms:Message,state:FSMContext):
     date = await state.get_data()
-    info = date.get("user_id")
+    info = int(date.get("user_id"))
     eski_parol = ms.text
     user = select_users(info)
-    parol = user[3]
+    parol = user['password']
     if eski_parol == parol:
         await ms.answer("Yangi parolni kiriting")
         await Nastroyka.password_set.set()
@@ -65,15 +70,17 @@ async def Eski(ms:Message,state:FSMContext):
 @dp.message_handler(state=Nastroyka.password_set)
 async def japjd(ms:Message,state:FSMContext):
     date = await state.get_data()
-    info = date.get("user_id")
+    info = int(date.get("user_id"))
     parl = ms.text
-    update_baza('parol',parl,info)
-    await ms.answer("✅ Parol o'zgartirildi",reply_markup=settings)
-    await Nastroyka.tanlash.set()
-    
-    await ms.delete()
-    # await asyncio.sleep(5)
-    # await balo.delete()
+    if password_check(parl):
+        update_baza('password',parl,info)
+        await ms.answer("✅ Parol o'zgartirildi",reply_markup=settings)
+        await Nastroyka.tanlash.set()
+        await ms.delete()
+    else:
+        balo = await ms.answer("❌ Parol kiritishda xato ❌")
+        await asyncio.sleep(5)
+        await balo.delete()
 
 
 @dp.callback_query_handler(text="orqaga",state=Nastroyka.tanlash)
@@ -103,4 +110,5 @@ async def Chiqdim(call:CallbackQuery,state:FSMContext):
 async def NotVhi(call:CallbackQuery):
     xabar = "Qanday o'zgartirish kiritasiz 🔄"
     await call.message.answer(xabar,reply_markup=settings)
+    await call.message.delete()
     await Nastroyka.tanlash.set()

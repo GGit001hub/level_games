@@ -1,7 +1,7 @@
 from aiogram.types import Message, CallbackQuery
 from aiogram.dispatcher.filters.builtin import CommandStart
 from aiogram.dispatcher import FSMContext
-from aiogram import Dispatcher
+# from aiogram import Dispatcher
 from datetime import datetime   
 
 from loader import dp,bot
@@ -9,7 +9,7 @@ import sqlite3
 import asyncio
 
 from .functions import *
-from .function_farm import create_farm
+from .function_farm import create_farm,others_create
 from keyboards.default.for_start import *
 from keyboards.inline.sozlamalar import *
 from states.All_State import *
@@ -39,7 +39,8 @@ async def urjaksf(call:CallbackQuery):
         await asyncio.sleep(10)
         await balo.delete()
     else:
-        await call.message.answer("🖊 Accountga ism kiriting")
+        await call.message.answer("🖊 Accountga ism kiriting\n👮🏽‍♂️ Max belgi 12 ta ✅\
+            \n👮🏽‍♂️ Faqat harflar va sonlar ✅")
         await Register.ism.set()
         await call.message.delete()
 
@@ -47,13 +48,13 @@ async def urjaksf(call:CallbackQuery):
 @dp.message_handler(state=Register.ism)
 async def ismxona(ms:Message,state:FSMContext):
     ism = ms.text
-    bormi = name_get(ism)
-    if bormi == "true":
-        await ms.answer("❗ Bunaqa ism bor\nBoshqa ism kiriting ✅")
-    else:
+    bormi = name_check(ism)
+    if bormi:
         await state.update_data(name=ism)
         await ms.answer("📞 Telefon nomer kiriting",reply_markup=phone_uvhun)
         await Register.phone.set()
+    else:
+        await ms.answer("❗ Ism kiritishda xato mavjut\nBoshqatdan ism kiriting ✅")
 
 
 
@@ -81,7 +82,8 @@ async def YoshXona(ms:Message, state:FSMContext):
     try:
         yosh = int(ms.text)
         if yosh > 0 and yosh < 101:
-            await ms.answer("🔐 Parol yarating")
+            await ms.answer("🔐 Yangi parol yarating\n📌 Min belgi 8 ta \
+                \n📌 Harflar, Sonlar majburiy")
             await Register.password.set()
             await state.update_data(age = ms.text)
         else:
@@ -92,18 +94,20 @@ async def YoshXona(ms:Message, state:FSMContext):
 
 @dp.message_handler(state=Register.password)
 async def Taratildi(ms:Message, state:FSMContext):
-    infp = ms.from_user.id
-    date = await state.get_data()
-    name = date.get("name")
-    phone = date.get("phone")
-    create_farm(name,infp)## ferma yaratish
-
     password = ms.text
-    await state.update_data(user_id = infp)
+    if password_check(password):
+        infp = ms.from_user.id
+        date = await state.get_data()
+        name = date.get("name")
+        phone = date.get("phone")
+        create_farm(name,infp)## ferma yaratish
+        others_create(infp,name)# qo'shimcha yartish
+        await state.update_data(user_id = infp)
 
-    register_account(infp,name,phone,password,)## account yaratish
-    await ms.answer("📃 Siz muvofaqiyatli ro'yxatdan o'tdingiz ✅\
-        \n🔧 /profile ni bosib  malumotlarni ko'rishingiz mumkin ❗",reply_markup=level_games)
-    await ms.delete()
-    await Games.bosh_holat.set()
-
+        register_account(infp,name,phone,password,)## account yaratish
+        await ms.answer("📃 Siz muvofaqiyatli ro'yxatdan o'tdingiz ✅\
+            \n🔧 /profile ni bosib  malumotlarni ko'rishingiz mumkin ❗",reply_markup=level_games)
+        await ms.delete()
+        await Games.bosh_holat.set()
+    else:
+        await ms.answer("Parol xato kiritildi")

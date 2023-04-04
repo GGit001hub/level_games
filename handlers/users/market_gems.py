@@ -27,10 +27,11 @@ async def Orxona(call:CallbackQuery):
 async def Kumxona(call:CallbackQuery, state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
 
     about_user = select_users(user_idn)
-    dengi = about_user[5]
-    kumush = about_user[6]
+    dengi = int(about_user['pul'])
+    kumush = int(about_user['kumush'])
 
     if dengi >= 59:
         updengi = int(dengi) - 59
@@ -57,10 +58,11 @@ async def Kumxona(call:CallbackQuery, state:FSMContext):
 async def Kumxona(call:CallbackQuery, state:FSMContext):
     date = await state.get_data()
     user_idn = date.get("user_id")
+    user_idn = int(user_idn)
 
     about_user = select_users(user_idn)
-    dengi = about_user[5]
-    kumush = about_user[6]
+    dengi = int(about_user['pul'])
+    kumush = int(about_user['kumush'])
 
     if dengi >= 549:
         updengi = int(dengi) - 549
@@ -91,6 +93,7 @@ async def Kumxona(call:CallbackQuery, state:FSMContext):
 # async def Kumxona(call:CallbackQuery, state:FSMContext):
 #     date = await state.get_data()
 #     user_idn = date.get("user_id")
+#     user_idn = int(user_idn)
 
 #     about_user = select_users(user_idn)
 #     dengi = about_user[5]

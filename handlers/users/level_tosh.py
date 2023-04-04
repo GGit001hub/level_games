@@ -13,13 +13,14 @@ import random as r
 import asyncio
 
 kutish = ["👀","🤑","👁","🙁","🙁"]
-sovgalar = ["💎",3,5,5,5,5,5,5,5,7,10,10]
+sovgalar = ["💎",3,3,5,5,5,5,5,5,5,7,7,10,10]
 
 @dp.callback_query_handler(text="reply",state=LevelUp.tosh)
 async def ToshSjak(call:CallbackQuery,state:FSMContext):
     await call.message.delete()
     date = await state.get_data()
     idn = date.get("user_id")
+    idn = int(idn)
     user = select_users(idn)
     
     stic = r.choice(kutish)
@@ -27,7 +28,7 @@ async def ToshSjak(call:CallbackQuery,state:FSMContext):
     await asyncio.sleep(3)
     await haz.delete()
 
-    puli = user[5]
+    puli = int(user['pul'])
     if puli >= 3:
         ayrish = puli - 3
         update_baza('pul',ayrish,idn)
@@ -48,7 +49,7 @@ async def ToshSjak(call:CallbackQuery,state:FSMContext):
 
         if one_inline == two_inline and one_inline == tri_inline:
             level_up(idn,one_inline)
-            daraja = user[4].split(",")
+            daraja = user['level'].split(",")
             lvl = daraja[0]
             qoldiq = daraja[-1]
             await call.message.answer(f"✅ <b>Sizga 3 ta {one_inline} raqami tushdi</b>\

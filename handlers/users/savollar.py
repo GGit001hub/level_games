@@ -27,6 +27,8 @@ async def UchtaliK(call:CallbackQuery,state:FSMContext):
     pulls.append(1)
     get_date = await state.get_data()
     info = get_date.get("user_id")
+    info = int(info)
+
     random_urls = "http://aabbdd.pythonanywhere.com/quiz/"
     respons = requests.request('GET',random_urls)
     date = json.loads(respons.text)
@@ -62,7 +64,7 @@ async def UchtaliK(call:CallbackQuery,state:FSMContext):
         balo = await call.message.answer(f"<b>{tr} - Savol</b>\n{savol}",reply_markup=options)
         tr += 1
         await Quizs.uchtalik.set()
-        await asyncio.sleep(10)
+        await asyncio.sleep(5)
         try:
             await balo.delete()
         except aiogram.utils.exceptions.MessageToDeleteNotFound:
@@ -70,7 +72,7 @@ async def UchtaliK(call:CallbackQuery,state:FSMContext):
     await call.message.answer(f"✅ Siz <b>{sum(pulls)-1} ta savol</b>ga to'g'ri javob berdingiz ❗\
         \n💰 Va <b>{sum(pulls)} $</b> yutib oldingiz ✨",reply_markup=nechatlig)
     uzi_bor = pullari(info)
-    jami = uzi_bor + sum(pulls)
+    jami = int(uzi_bor) + sum(pulls)
     update_baza('pul',jami,info)
     await Quizs.boshi.set()
 
@@ -86,6 +88,8 @@ async def UchtaliK(call:CallbackQuery,state:FSMContext):
     pulls.append(3)
     db = await state.get_data()
     info = db.get("user_id")
+    info = int(info)
+    
     random_urls = "http://aabbdd.pythonanywhere.com/quiz/"
     respons = requests.request('GET',random_urls)
     date = json.loads(respons.text)
@@ -130,7 +134,7 @@ async def UchtaliK(call:CallbackQuery,state:FSMContext):
         \n💰 Va <b>{sum(pulls)} $</b> yutib oldingiz ✨",reply_markup=nechatlig)
     
     uzi_bor = pullari(info)
-    jami = uzi_bor + sum(pulls)
+    jami = int(uzi_bor) + sum(int(pulls))
     update_baza('pul',jami,info)
     await Quizs.boshi.set()
 
