@@ -3,7 +3,7 @@ import pymongo
 from pymongo import MongoClient
 import random as r
 
-cluster = MongoClient('mongodb://localhost:27017')
+cluster = MongoClient("mongodb+srv://baza:github_2005@cluster1.laecs6u.mongodb.net/?retryWrites=true&w=majority")
 user = cluster['level_game']
 collection_farm = user['farms']
 

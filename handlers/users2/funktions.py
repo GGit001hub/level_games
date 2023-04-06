@@ -3,7 +3,7 @@ from .words import lugat
 from .words1 import dicttion
 from pymongo import MongoClient
 
-cluster = MongoClient('mongodb://localhost:27017')
+cluster = MongoClient("mongodb+srv://baza:github_2005@cluster1.laecs6u.mongodb.net/?retryWrites=true&w=majority")
 
 others = cluster['level_game']
 collection_others = others['others']

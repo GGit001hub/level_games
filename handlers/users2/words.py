@@ -186,10 +186,16 @@ lugat = ['non',
 
 ]
 
+# import pymongo 
+# from pymongo import MongoClient
 
 
+# cluster = MongoClient("mongodb+srv://baza:github_2005@cluster1.laecs6u.mongodb.net/?retryWrites=true&w=majority")
+# db = cluster['ilhomjon']
+# collection = db['level_bot']
 
-
+# post = {'_id':1, 'name':'Tim', 'score':5}
+# collection.insert_one(post)
 
 
 

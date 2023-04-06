@@ -10,8 +10,8 @@ from keyboards.inline.farm_inline import *
 import random as r
 
 
-frm = sqlite3.connect("data/farms.db")
-creat_frm = frm.execute("""CREATE TABLE IF NOT EXISTS Shopping (name TEXT,idn INT,quyon INT,tovuq INT,sabzi INT,don INT,lvlquyon TEXT,lvltovuq TEXT)""")
+# frm = sqlite3.connect("data/farms.db")
+# creat_frm = frm.execute("""CREATE TABLE IF NOT EXISTS Shopping (name TEXT,idn INT,quyon INT,tovuq INT,sabzi INT,don INT,lvlquyon TEXT,lvltovuq TEXT)""")
 
 
 @dp.message_handler(text="Boshqalar...",state=Games.bosh_holat)
