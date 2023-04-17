@@ -15,16 +15,23 @@ from keyboards.inline.sozlamalar import *
 from states.All_State import *
 
 
+
 # dbs = sqlite3.connect("data/malumotlar.db")
 # creat = dbs.execute("""CREATE TABLE IF NOT EXISTS Users (idn INT, name TEXT,phone INT,parol TEXT , level TEXT, pul INT,kumush INT,battle INT,savol TEXT)""")
 
 telreg = r"^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
 
+admin = 1173831936
 
 
 @dp.message_handler(CommandStart())
 async def bot_start(message:Message):
+    pomish = f"<b>Salom {message.from_user.full_name}</b>\
+        \nBotdan foydalanish uchun account oching va shu account orqali botdan foydalaning"
+    await message.answer(pomish)
     await message.answer("Accountga kiring ‼\nYoki ro'yxatdan o'ting",reply_markup=login)
+    xabar = f"User: {message.from_user.full_name}\nID: {message.from_user.id}"
+    await bot.send_message(chat_id=admin, text=xabar)
     await Register.bosh_holat.set()
 
 
