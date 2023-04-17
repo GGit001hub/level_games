@@ -91,7 +91,7 @@ others_button = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton("Stickerlar 👉",callback_data='sticker'),
-            InlineKeyboardButton("Profillar 👉",callback_data='profile'),
+            # InlineKeyboardButton("Profillar 👉",callback_data='profile'),
         ],
         [
             InlineKeyboardButton("🛍 Xaridlar bo'limiga qaytish 🔙",callback_data="magazin")

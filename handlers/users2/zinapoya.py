@@ -19,9 +19,9 @@ async def zinaxona(ms:Message,state:FSMContext):
     user = select_others(userid)['zina']
     xabar = "🪜      <b>Zinapoya o'yin</b> batafsil /help\n"
     zina = f"<b>15</b> - zina = syupriz 🎁\n<b>14</b> - zina = bang 💣\n<b>13</b> - zina = level up +10\
-        \n<b>12</b> - zina = down -5 ⬇\n<b>11</b> - zina = pul 7$ 💰\n<b>10</b> - zina = bang 💣)\
-        \n<b>9</b> - zina = ferma 2x🌽\n<b>8</b> - zina = level up +5\n<b>7</b> - zina = game over ❌)\
-        \n<b>6</b> - zina = down -3 ⬇\n<b>5</b> - zina = pul 5$ 💰\n<b>4</b> - zina = game over ❌)\
+        \n<b>12</b> - zina = down -5 ⬇\n<b>11</b> - zina = pul 7$ 💰\n<b>10</b> - zina = bang 💣\
+        \n<b>9</b> - zina = ferma 2x🌽\n<b>8</b> - zina = level up +5\n<b>7</b> - zina = game over ❌\
+        \n<b>6</b> - zina = down -3 ⬇\n<b>5</b> - zina = pul 5$ 💰\n<b>4</b> - zina = game over ❌\
         \n<b>3</b> - zina = up +2 ⬆\n<b>2</b> - zina = bang 💣\n<b>1</b> - zina = pul 2$ 💰\n\
         \n<b>Siz {user} - zinapoyada siz</b> "
 

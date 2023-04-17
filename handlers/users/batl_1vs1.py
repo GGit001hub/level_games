@@ -15,7 +15,7 @@ import asyncio,aiogram
 
 @dp.callback_query_handler(text="batl1vs1",state=LevelUp.battle)
 async def birgaxona(call:CallbackQuery):
-    await call.message.answer("Bu bo'lim tayor emas")
+    await call.message.answer("Conection....")
     # await call.message.answer("Batlga kimni chaqirasiz ❓\nAccount nomini kiriting ❗",reply_markup=bekor_qilish)
     # await call.message.delete()
     # await LevelUp.birga_bir.set()
